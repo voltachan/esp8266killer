@@ -1,6 +1,11 @@
 # ESP8266杀手
 ***源自esp8266_deauther，高于esp8266_deauther***
 # 一个美观、简单、易用、易二次创作的ESP8266固件！Star、Fork、Follow 三连！！！
+# 注意事项
++ SSID:`pwned`
++ 密码：`deauther`
++ 管理地址：`192.168.4.1`
+
 # 截图
 
 ![截图](http://www.tzr.me/images/2019/01/29/0.png)
