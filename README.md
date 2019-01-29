@@ -18,3 +18,5 @@
 **参考文档：https://github.com/spacehuhn/esp8266_deauther/wiki/Installation#compiling-using-arduino-ide**
 
 **提交 issue 请看：[提问的艺术.md](https://github.com/voltachan/esp8266killer/blob/master/%E6%8F%90%E9%97%AE%E7%9A%84%E8%89%BA%E6%9C%AF.md)**
+
+**交流TG群：[https://t.me/esp8266chi](https://t.me/esp8266chi)**
