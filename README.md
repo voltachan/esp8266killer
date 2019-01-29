@@ -1,6 +1,11 @@
 # ESP8266杀手
-***源自esp8266_deauther，高于esp8266_deauther***
+***源自esp8266_deauther，高于esp8266_deauther***。代码中文注释，部分模块性能大幅优化。
 # 一个美观、简单、易用、易二次创作的ESP8266固件！Star、Fork、Follow 三连！！！
+# 注意事项
++ SSID:`pwned`
++ 密码：`deauther`
++ 管理地址：`192.168.4.1`
+
 # 截图
 
 ![截图](http://www.tzr.me/images/2019/01/29/0.png)
@@ -13,3 +18,5 @@
 **参考文档：https://github.com/spacehuhn/esp8266_deauther/wiki/Installation#compiling-using-arduino-ide**
 
 **提交 issue 请看：[提问的艺术.md](https://github.com/voltachan/esp8266killer/blob/master/%E6%8F%90%E9%97%AE%E7%9A%84%E8%89%BA%E6%9C%AF.md)**
+
+# 交流TG群：[https://t.me/esp8266chi](https://t.me/esp8266chi)
