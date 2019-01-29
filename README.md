@@ -1,5 +1,5 @@
 # ESP8266杀手
-***源自esp8266_deauther，高于esp8266_deauther***。代码中文注释，部分模块性能大幅优化。
+***源自esp8266_deauther，高于esp8266_deauther***。代码中文注释，部分模块性能大幅优化。[查看刷写教程](https://github.com/voltachan/esp8266killer/tree/master/刷写工具/刷写教程.md)
 # 一个美观、简单、易用、易二次创作的ESP8266固件！Star、Fork、Follow 三连！！！
 # 注意事项
 + SSID:`pwned`
