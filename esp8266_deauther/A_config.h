@@ -26,7 +26,7 @@
     Adjust following settings for your type of LED
     you can ignore the rest of the #define's
    = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
-   
+
 // === Settings for Digital LED and RGB LED === //
 #define LED_ANODE false   // common vcc (+)
 #define LED_PIN_R 16      // NodeMCU on-board LED

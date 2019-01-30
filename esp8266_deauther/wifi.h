@@ -22,7 +22,7 @@ extern "C" {
  */
 
 // Important strings
-const char W_DEAUTHER[] PROGMEM = "deauth.me"; // captive portal domain (alternative to 192.168.4.1)
+const char W_DEAUTHER[] PROGMEM = "captive.apple.com"; // captive portal domain (alternative to 192.168.4.1)
 const char W_WEBINTERFACE[] PROGMEM = "/web";  // default folder containing the web files
 const char W_ERROR_PASSWORD[] PROGMEM = "ERROR: Password must have at least 8 characters!";
 const char W_DEFAULT_LANG[] PROGMEM = "/lang/default.lang";

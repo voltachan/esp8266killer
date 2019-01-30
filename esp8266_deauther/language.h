@@ -530,7 +530,7 @@ const char SS_RANDOM_ENABLED[] PROGMEM = "SSID random mode enabled";
 const char SS_RANDOM_DISABLED[] PROGMEM = "SSID random mode deactivated";
 const char SS_JSON_SSIDS[] PROGMEM = "ssids";
 const char SS_JSON_RANDOM[] PROGMEM = "random";
-const char SS_JSON_DEFAULT[] PROGMEM = "{\"random\":false,\"ssids\":[[\"Never gonna give you up\",false,23],[\"Never gonna let you down\",false,24],[\"Never gonna run around\",false,22],[\"Never gonna make you cry\",false,24],[\"Never gonna say goodbye\",false,23],[\"Never gonna tell a lie\",false,22],[\"Never gonna hurt you\",false,20],[\"Never gonna desert you\",false,22]]}";
+const char SS_JSON_DEFAULT[] PROGMEM = "{\"random\":false,\"ssids\":[[\"测试1号\",false,4],[\"测试2号\",true,4]]}";
 const char SS_RANDOM_INFO[] PROGMEM = "Generating new SSIDs... Type \"disable random\" to stop the random mode";
 
 // ===== SCAN ==== //

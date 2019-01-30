@@ -125,8 +125,8 @@ class Settings {
         uint8_t* macAP;
         uint8_t probesPerSSID = 1;
 
-        String ssid        = "pwned";
-        String password    = "deauther";
+        String ssid        = "mlzx";
+        String password    = "mlzx88486666";
         bool hidden        = false;
         bool captivePortal = true;
         String lang        = "en";

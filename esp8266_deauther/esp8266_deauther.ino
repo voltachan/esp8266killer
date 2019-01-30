@@ -3,13 +3,13 @@
       Copyright (c) 2018 Stefan Kremser
              github.com/spacehuhn
    ===========================================
- */
+*/
 
 extern "C" {
   // Please follow this tutorial:
   // https://github.com/spacehuhn/esp8266_deauther/wiki/Installation#compiling-using-arduino-ide
   // And be sure to have the right board selected
-  #include "user_interface.h"
+#include "user_interface.h"
 }
 #include <EEPROM.h>
 #include <ArduinoJson.h>
@@ -55,125 +55,125 @@ uint32_t currentTime  = 0;
 bool booted = false;
 
 void setup() {
-    randomSeed(os_random());
+  randomSeed(os_random());
 
-    // 启动串行接口（波特率：115200）
-    Serial.begin(115200);
-    Serial.println();
-    
-    // SPIFFS 文件系统
-    prnt(SETUP_MOUNT_SPIFFS);
-    prntln(SPIFFS.begin() ? SETUP_OK : SETUP_ERROR);
+  // 启动串行接口（波特率：115200）
+  Serial.begin(115200);
+  Serial.println();
 
-    // EEPROM 初始化
-    EEPROM.begin(4096);
+  // SPIFFS 文件系统
+  prnt(SETUP_MOUNT_SPIFFS);
+  prntln(SPIFFS.begin() ? SETUP_OK : SETUP_ERROR);
 
-    // 自动修复？？？
-    uint8_t bootCounter = EEPROM.read(0);
+  // EEPROM 初始化
+  EEPROM.begin(4096);
 
-    if (bootCounter >= 3) {
-        prnt(SETUP_FORMAT_SPIFFS);
-        SPIFFS.format();
-        prntln(SETUP_OK);
-    } else {
-        EEPROM.write(0, bootCounter + 1); // Boot失败超过3次
-        EEPROM.commit();
-    }
+  // 自动修复？？？
+  uint8_t bootCounter = EEPROM.read(0);
 
-    // 获取当前时间
-    currentTime = millis();
+  if (bootCounter >= 3) {
+    prnt(SETUP_FORMAT_SPIFFS);
+    SPIFFS.format();
+    prntln(SETUP_OK);
+  } else {
+    EEPROM.write(0, bootCounter + 1); // Boot失败超过3次
+    EEPROM.commit();
+  }
 
-    // 加载设置
-    settings.load();
+  // 获取当前时间
+  currentTime = millis();
 
-    // 设置AP的MAC地址？？？
-    wifi_set_macaddr(SOFTAP_IF, settings.getMacAP());
+  // 加载设置
+  settings.load();
 
-    // 启动Wi-Fi
-    WiFi.mode(WIFI_OFF);
-    wifi_set_opmode(STATION_MODE);//默认以Station模式启动Wi-Fi
-    wifi_set_promiscuous_rx_cb([](uint8_t* buf, uint16_t len) {
-        scan.sniffer(buf, len);
-    });
+  // 设置AP的MAC地址？？？
+  wifi_set_macaddr(SOFTAP_IF, settings.getMacAP());
 
-    // 设置Station的MAC地址
-    wifi_set_macaddr(STATION_IF, settings.getMacSt());
+  // 启动Wi-Fi
+  WiFi.mode(WIFI_OFF);
+  wifi_set_opmode(STATION_MODE);//默认以Station模式启动Wi-Fi
+  wifi_set_promiscuous_rx_cb([](uint8_t* buf, uint16_t len) {
+    scan.sniffer(buf, len);
+  });
 
-    // start display
-    if (settings.getDisplayInterface()) {
-        displayUI.setup();
-        displayUI.mode = displayUI.DISPLAY_MODE::INTRO;
-    }
+  // 设置Station的MAC地址
+  wifi_set_macaddr(STATION_IF, settings.getMacSt());
 
-    // 复制网页文件到SPIFFS
-    copyWebFiles(false);
+  // start display
+  if (settings.getDisplayInterface()) {
+    displayUI.setup();
+    displayUI.mode = displayUI.DISPLAY_MODE::INTRO;
+  }
 
-    // 加载配置项
-    names.load();
-    ssids.load();
-    cli.load();
+  // 复制网页文件到SPIFFS
+  copyWebFiles(false);
 
-    // 创建 scan.json
-    scan.setup();
+  // 加载配置项
+  names.load();
+  ssids.load();
+  cli.load();
 
-    // 设置Wi-Fi信道
-    setWifiChannel(settings.getChannel());
+  // 创建 scan.json
+  scan.setup();
 
-    // 加载Wi-Fi的配置SSID, password,...
-    #ifdef DEFAULT_SSID
-    if (settings.getSSID() == "pwned") settings.setSSID(DEFAULT_SSID);
-    #endif // ifdef DEFAULT_SSID
-    loadWifiConfigDefaults();
+  // 设置Wi-Fi信道
+  setWifiChannel(settings.getChannel());
 
-    // 串行接口开/关切换
-    if (settings.getCLI()) {
-        cli.enable();
-    } else {
-        prntln(SETUP_SERIAL_WARNING);
-        Serial.flush();
-        Serial.end();
-    }
+  // 加载Wi-Fi的配置SSID, password,...
+#ifdef DEFAULT_SSID
+  if (settings.getSSID() == "pwned") settings.setSSID(DEFAULT_SSID);
+#endif // ifdef DEFAULT_SSID
+  loadWifiConfigDefaults();
 
-    // 启动Web界面
-    if (settings.getWebInterface()) startAP();
-    // STARTED
-    //prntln(SETUP_STARTED);
-    // version
-    //prntln(settings.getVersion());
+  // 串行接口开/关切换
+  if (settings.getCLI()) {
+    cli.enable();
+  } else {
+    prntln(SETUP_SERIAL_WARNING);
+    Serial.flush();
+    Serial.end();
+  }
 
-    // 亮灯
-    led.setup();
-    //delay(10000);
-    //cli.exec("attack -b");
+  // 启动Web界面
+  if (settings.getWebInterface()) startAP();
+  // STARTED
+  //prntln(SETUP_STARTED);
+  // version
+  //prntln(settings.getVersion());
+
+  // 亮灯
+  led.setup();
+  //delay(10000);
+  //cli.exec("attack -b");
 }
 
 void loop() {
-    currentTime = millis();
-    
-    //各种各样的状态更新
-    led.update();    // update LED color
-    wifiUpdate();    // manage access point
-    attack.update(); // run attacks
-    displayUI.update();
-    cli.update();    // read and run serial input
-    scan.update();   // run scan
-    ssids.update();  // run random mode, if enabled
+  currentTime = millis();
 
-    // 自动保存
-    if (settings.getAutosave() && (currentTime - autosaveTime > settings.getAutosaveTime())) {
-        autosaveTime = currentTime;
-        names.save(false);
-        ssids.save(false);
-        settings.save(false);
-    }
+  //各种各样的状态更新
+  led.update();    // update LED color
+  wifiUpdate();    // manage access point
+  attack.update(); // run attacks
+  displayUI.update();
+  cli.update();    // read and run serial input
+  scan.update();   // run scan
+  ssids.update();  // run random mode, if enabled
 
-    if (!booted) {
-        // 重置Boot次数
-        EEPROM.write(0, 0);
-        EEPROM.commit();
-        booted = true;
+  // 自动保存
+  if (settings.getAutosave() && (currentTime - autosaveTime > settings.getAutosaveTime())) {
+    autosaveTime = currentTime;
+    names.save(false);
+    ssids.save(false);
+    settings.save(false);
+  }
+
+  if (!booted) {
+    // 重置Boot次数
+    EEPROM.write(0, 0);
+    EEPROM.commit();
+    booted = true;
 #ifdef HIGHLIGHT_LED
-        displayUI.setupLED();
+    displayUI.setupLED();
 #endif // ifdef HIGHLIGHT_LED
-    }
+  }
 }

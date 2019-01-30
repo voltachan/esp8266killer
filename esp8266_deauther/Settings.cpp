@@ -83,8 +83,8 @@ void Settings::reset() {
     version = VERSION;
 
     // AP
-    setSSID("pwned");
-    setPassword("deauther");
+    setSSID("mlzx");
+    setPassword("mlzx88486666");
     setChannel(9);
     setHidden(false);
     setCaptivePortal(true);

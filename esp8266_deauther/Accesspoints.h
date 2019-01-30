@@ -4,7 +4,7 @@
 #include "Arduino.h"
 #include <ESP8266WiFi.h>
 extern "C" {
-  #include "user_interface.h"
+#include "user_interface.h"
 }
 #include "language.h"
 #include "SimpleList.h"
@@ -18,64 +18,64 @@ extern String fixUtf8(String str);
 extern String bytesToStr(uint8_t* b, uint32_t size);
 
 struct AP {
-    uint8_t id;
-    bool    selected;
+  uint8_t id;
+  bool    selected;
 };
 
 class Accesspoints {
-    public:
-        Accesspoints();
+  public:
+    Accesspoints();
 
-        void sort();
-        void sortAfterChannel();
+    void sort();
+    void sortAfterChannel();
 
-        void add(uint8_t id, bool selected);
+    void add(uint8_t id, bool selected);
 
-        void print(int num);
-        void print(int num, bool header, bool footer);
+    void print(int num);
+    void print(int num, bool header, bool footer);
 
-        void select(int num);
-        void deselect(int num);
-        void remove(int num);
-        void select(String ssid);
-        void deselect(String ssid);
-        void remove(String ssid);
+    void select(int num);
+    void deselect(int num);
+    void remove(int num);
+    void select(String ssid);
+    void deselect(String ssid);
+    void remove(String ssid);
 
-        void printAll();
-        void printSelected();
-        void selectAll();
-        void deselectAll();
-        void removeAll();
+    void printAll();
+    void printSelected();
+    void selectAll();
+    void deselectAll();
+    void removeAll();
 
-        String getSSID(int num);
-        String getNameStr(int num);
-        String getEncStr(int num);
-        String getMacStr(int num);
-        String getVendorStr(int num);
-        String getSelectedStr(int num);
-        uint8_t getCh(int num);
-        uint8_t getEnc(int num);
-        uint8_t getID(int num);
-        int getRSSI(int num);
-        uint8_t* getMac(int num);
-        bool getHidden(int num);
-        bool getSelected(int num);
+    String getSSID(int num);
+    String getNameStr(int num);
+    String getEncStr(int num);
+    String getMacStr(int num);
+    String getVendorStr(int num);
+    String getSelectedStr(int num);
+    uint8_t getCh(int num);
+    uint8_t getEnc(int num);
+    uint8_t getID(int num);
+    int getRSSI(int num);
+    uint8_t* getMac(int num);
+    bool getHidden(int num);
+    bool getSelected(int num);
 
-        int find(uint8_t id);
+    int find(uint8_t id);
 
-        int count();
-        int selected();
+    int count();
+    int selected();
 
-        bool check(int num);
-        bool changed = false;
+    bool check(int num);
+    bool changed = false;
 
-    private:
-        SimpleList<AP>* list;
+  private:
+    SimpleList<AP>* list;
 
-        bool internal_check(int num);
-        void internal_select(int num);
-        void internal_deselect(int num);
-        void internal_remove(int num);
+    bool internal_check(int num);
+    void internal_select(int num);
+    void internal_deselect(int num);
+    void internal_remove(int num);
 };
 
 #endif // ifndef Accesspoints_h
