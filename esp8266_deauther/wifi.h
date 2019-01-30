@@ -229,53 +229,83 @@ void startAP(String path, String ssid, String password, uint8_t ch, bool hidden,
     // ================================================================
     // post here the output of the webConverter.py
 #ifdef USE_PROGMEM_WEB_FILES
-    if (!settings.getWebSpiffs()) {
-        server.on(String(SLASH).c_str(), HTTP_GET, []() {
-            sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
-        });
-        server.on(String(F("/attack.html")).c_str(), HTTP_GET, []() {
-            sendProgmem(attackhtml, sizeof(attackhtml), W_HTML);
-        });
-        server.on(String(F("/index.html")).c_str(), HTTP_GET, []() {
-            sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
-        });
-        server.on(String(F("/scan.html")).c_str(), HTTP_GET, []() {
-            sendProgmem(scanhtml, sizeof(scanhtml), W_HTML);
-        });
-        server.on(String(F("/settings.html")).c_str(), HTTP_GET, []() {
-            sendProgmem(settingshtml, sizeof(settingshtml), W_HTML);
-        });
-        server.on(String(F("/ssids.html")).c_str(), HTTP_GET, []() {
-            sendProgmem(ssidshtml, sizeof(ssidshtml), W_HTML);
-        });
-        server.on(String(F("/base.css")).c_str(), HTTP_GET, []() {
-            sendProgmem(basecss, sizeof(basecss), W_CSS);
-        });
-        server.on(String(F("/font.css")).c_str(), HTTP_GET, []() {
-            sendProgmem(fontcss, sizeof(fontcss), W_CSS);
-        });
-        server.on(String(F("/bootstrap.css")).c_str(), HTTP_GET, []() {
-            sendProgmem(bootstrapcss, sizeof(bootstrapcss), W_CSS);
-        });
-        server.on(String(F("/material.css")).c_str(), HTTP_GET, []() {
-            sendProgmem(materialcss, sizeof(materialcss), W_CSS);
-        });
-        server.on(String(F("/js/attack.js")).c_str(), HTTP_GET, []() {
-            sendProgmem(attackjs, sizeof(attackjs), W_JS);
-        });
-        server.on(String(F("/js/scan.js")).c_str(), HTTP_GET, []() {
-            sendProgmem(scanjs, sizeof(scanjs), W_JS);
-        });
-        server.on(String(F("/js/settings.js")).c_str(), HTTP_GET, []() {
-            sendProgmem(settingsjs, sizeof(settingsjs), W_JS);
-        });
-        server.on(String(F("/js/site.js")).c_str(), HTTP_GET, []() {
-            sendProgmem(sitejs, sizeof(sitejs), W_JS);
-        });
-        server.on(String(F("/js/ssids.js")).c_str(), HTTP_GET, []() {
-            sendProgmem(ssidsjs, sizeof(ssidsjs), W_JS);
-        });
-    }
+if(!settings.getWebSpiffs()){
+  server.on(String(SLASH).c_str(), HTTP_GET, [](){
+  sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
+});
+server.on(String(F("/attack.html")).c_str(), HTTP_GET, [](){
+  sendProgmem(attackhtml, sizeof(attackhtml), W_HTML);
+});
+server.on(String(F("/index.html")).c_str(), HTTP_GET, [](){
+  sendProgmem(indexhtml, sizeof(indexhtml), W_HTML);
+});
+server.on(String(F("/scan.html")).c_str(), HTTP_GET, [](){
+  sendProgmem(scanhtml, sizeof(scanhtml), W_HTML);
+});
+server.on(String(F("/settings.html")).c_str(), HTTP_GET, [](){
+  sendProgmem(settingshtml, sizeof(settingshtml), W_HTML);
+});
+server.on(String(F("/ssids.html")).c_str(), HTTP_GET, [](){
+  sendProgmem(ssidshtml, sizeof(ssidshtml), W_HTML);
+});
+server.on(String(F("/base.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(basecss, sizeof(basecss), W_CSS);
+});
+server.on(String(F("/bootstrap.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(bootstrapcss, sizeof(bootstrapcss), W_CSS);
+});
+server.on(String(F("/dashbord.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(dashbordcss, sizeof(dashbordcss), W_CSS);
+});
+server.on(String(F("/font.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(fontcss, sizeof(fontcss), W_CSS);
+});
+server.on(String(F("/material.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(materialcss, sizeof(materialcss), W_CSS);
+});
+server.on(String(F("/project.css")).c_str(), HTTP_GET, [](){
+  sendProgmem(projectcss, sizeof(projectcss), W_CSS);
+});
+server.on(String(F("/js/attack.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(attackjs, sizeof(attackjs), W_JS);
+});
+server.on(String(F("/js/base.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(basejs, sizeof(basejs), W_JS);
+});
+server.on(String(F("/js/canvasnest.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(canvasnestjs, sizeof(canvasnestjs), W_JS);
+});
+server.on(String(F("/js/jquery.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(jqueryjs, sizeof(jqueryjs), W_JS);
+});
+server.on(String(F("/js/jqueryvalidate.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(jqueryvalidatejs, sizeof(jqueryvalidatejs), W_JS);
+});
+server.on(String(F("/js/material.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(materialjs, sizeof(materialjs), W_JS);
+});
+server.on(String(F("/js/materialdashboard.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(materialdashboardjs, sizeof(materialdashboardjs), W_JS);
+});
+server.on(String(F("/js/project.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(projectjs, sizeof(projectjs), W_JS);
+});
+server.on(String(F("/js/scan.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(scanjs, sizeof(scanjs), W_JS);
+});
+server.on(String(F("/js/scroll.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(scrolljs, sizeof(scrolljs), W_JS);
+});
+server.on(String(F("/js/settings.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(settingsjs, sizeof(settingsjs), W_JS);
+});
+server.on(String(F("/js/site.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(sitejs, sizeof(sitejs), W_JS);
+});
+server.on(String(F("/js/ssids.js")).c_str(), HTTP_GET, [](){
+  sendProgmem(ssidsjs, sizeof(ssidsjs), W_JS);
+});
+};
 #endif
     // ================================================================
 
