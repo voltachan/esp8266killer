@@ -4,8 +4,8 @@
 ## [查看教程](https://github.com/voltachan/esp8266killer/wiki)
 # 一个美观、简单、易用、易二次创作的ESP8266固件！Star、Fork、Follow 三连！！！
 # 注意事项
-+ SSID:`pwned`
-+ 密码：`deauther`
++ SSID:`mlzx`
++ 密码：`mlzx88486666`
 + 管理地址：`192.168.4.1`
 
 # 截图
