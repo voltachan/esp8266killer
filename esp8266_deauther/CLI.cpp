@@ -565,55 +565,6 @@ void CLI::runCommand(String input) {
         ssids.disableRandom();
     }
 
-    // ====== RICE ===== //
-    // => have you tried putting it into a bowl rice?
-    // funny command to mess with people, please don't share the info thanks <3
-    else if (eqlsCMD(0, CLI_RICE)) {
-        prntln(CLI_RICE_START);
-        uint32_t i     = 0;
-        uint8_t  multi = 1;
-        uint8_t  end   = random(80, 99);
-
-        if (list->get(1).toInt() > 1) multi = list->get(1).toInt();
-
-        while (true) {
-            if ((i % 10 == 0) && (i > 0)) {
-                char s[100];
-                sprintf(s, str(CLI_RICE_OUTPUT).c_str(), i / 10);
-                prnt(String(s));
-
-                if ((i / 10) == end) {
-                    prnt(CLI_RICE_ERROR);
-                    prnt(String(random(16, 255), HEX));
-                    prnt(String(random(16, 255), HEX));
-                    prnt(String(random(16, 255), HEX));
-                    prntln(String(random(16, 255), HEX));
-
-                    for (int i = 1; i <= 32; i++) {
-                        for (int i = 0; i < 2; i++) {
-                            for (int i = 1; i <= 8; i++) {
-                                prnt(String(random(16, 255), HEX));
-                                prnt(SPACE);
-                            }
-                            prnt(SPACE);
-                        }
-                        prntln();
-                    }
-                    ESP.reset();
-                } else if ((i / 10) % 10 == 0) {
-                    prnt(CLI_RICE_MEM);
-                    prnt(String(random(16, 255), HEX));
-                    prnt(String(random(16, 255), HEX));
-                    prnt(String(random(16, 255), HEX));
-                    prntln(String(random(16, 255), HEX));
-                }
-            }
-            prnt(POINT);
-            delay(100 * multi * multi);
-            i++;
-        }
-    }
-
     // ===== LOAD/SAVE ===== //
     // save [<type>] [<file>]
     // load [<type>] [<file>]
@@ -690,11 +641,6 @@ void CLI::runCommand(String input) {
     // set <setting> <value>
     else if (eqlsCMD(0, CLI_SET) && (list->size() == 3)) {
         settings.set(list->get(1).c_str(), list->get(2));
-    }
-
-    // ====== CHICKEN ===== //
-    else if (eqlsCMD(0, CLI_CHICKEN)) {
-        prntln(CLI_CHICKEN_OUTPUT);
     }
 
     // ===== STOP ===== //

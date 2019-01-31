@@ -97,7 +97,6 @@ const char CLI_RANDOM[] PROGMEM = "random";                    // random
 const char CLI_GET[] PROGMEM = "get";                          // get
 const char CLI_INFO[] PROGMEM = "info";                        // info
 const char CLI_HELP[] PROGMEM = "help";                        // help
-const char CLI_RICE[] PROGMEM = "rice";                        // rice
 const char CLI_FORMAT[] PROGMEM = "format";                    // format
 const char CLI_DELETE[] PROGMEM = "delete";                    // delete
 const char CLI_PRINT[] PROGMEM = "print";                      // print
@@ -216,69 +215,6 @@ const char CLI_HELP_HEADER[] PROGMEM = "[===== List of commands =====]";
 const char CLI_HELP_FOOTER[] PROGMEM = "========================================================================\r\nfor more information please visit github.com/spacehuhn/esp8266_deauther\r\n========================================================================";
 const char CLI_ERROR_NAME_LEN[] PROGMEM = "ERROR : Name length 0";
 const char CLI_ERROR_MAC_LEN[] PROGMEM = "ERROR : MAC length 0";
-const char CLI_RICE_START[] PROGMEM = "Starting rice debugger (auto - repair mode enabled), please stand by...\r\nKeep the device connected to a power supply until the debugger ends\r\nYOU RISK TO BRICK THE BOARD!!!";
-const char CLI_RICE_OUTPUT[] PROGMEM = "[ % d % % ]\r\n";
-const char CLI_RICE_ERROR[] PROGMEM = "ERROR : Memory check failure at block 0x";
-const char CLI_RICE_MEM[] PROGMEM = "Checking memory block 0x";
-const char CLI_CHICKEN_OUTPUT[] PROGMEM = "                                                                 ` - : /////////:-.                    \r\n"
-"                                                            ./++so:`   ``    `.:/++/.               \r\n"
-"                                                        `/+o+.+o:.s:-++//s`        `:++-            \r\n"
-"                                                     `/+oo+//d-   oh/    s-            :o/`         \r\n"
-"                                                   .++.o+` `h-   .d.     h`://+`         .o+        \r\n"
-"                                                 .o+` +/   +o    y-     +d+.  .y           .s-      \r\n"
-"                                                +o`   h    d`   `/     .h-    `h             ++     \r\n"
-"                                              .s-     d    -           .`     +/              /o    \r\n"
-"                                             :o`      y.                     -y                /+   \r\n"
-"                                            /+        :o       `            -h`                 s:  \r\n"
-"                                           /o          y..://///////:`     /o/o.                `h  \r\n"
-"                                          -s           +o:``       `-++::/+-  `o/                o: \r\n"
-"                                          y.          :o              `:::.`   `oo`              -s \r\n"
-"                                         -s           h`            .++:---/+/+/:::++.           `h \r\n"
-"                                         +/           h            :o`   `  `/s  `  .s-           d \r\n"
-"                                         o:          .s            h`   /h-   o:/h-  -s          `h \r\n"
-"                                         +/          +/            h`   ``    s- `   +/          -s \r\n"
-"                                         .y         `h`            -s-      `+y-.`.:+/           +: \r\n"
-"                                          o:        o:              `/+/:/+ss:.-:y/.`           `h` \r\n"
-"   .:-`                                   `y-      ++                  `so::-://+y.             +/  \r\n"
-"  :o.-/+:  :+//:`                          `s:   `+/                   -h//:::---:/o-          -y   \r\n"
-"  :o   `:o:h. `-+/`                         -d+.:o-                    .y.``...-/y/++`        `y.   \r\n"
-"   +/    `:hs    -o-                        o/:/yo:-`                   +y++s//+/.           `s.    \r\n"
-"    /o`    `oo`   `/+`                   .-:y/-`+:+so+/:-`              s-  y:              -s.     \r\n"
-" ++//+y:     -+     .o:            ``-:/+:-.`.:+/:hs+`++:/o/:.`        `h   .y`            /o`      \r\n"
-"`h` `./ys-            :o-   .--:////:-.`        `-/o/::.`/sh-:os/:.`   .y oo`+/          -o:        \r\n"
-" :o-   `-o+.           `/+o/:-..`                   `.:+++o/``/:-oo++/:.so+://`       `:+/`         \r\n"
-"  `/+:`   ..             `++`                           `.-/+/:-/sy.`+o:+y/-.      .-/+-`           \r\n"
-"    `-+/-                  .-                                `.:/o+:-:.```-:oy/:://:-`              \r\n"
-"       .:+/.                                                      `.-:/+/::s/-..`                   \r\n"
-"          .++.                                                          `.-h.                       \r\n"
-"            .o/                                                            +/                       \r\n"
-"              :o.                                                          :o                       \r\n"
-"               .o:                                                         -s                       \r\n"
-"                 /o`                                                       :+                       \r\n"
-"                  -o-                                                      o:                       \r\n"
-"                   `o/                                                     h`                       \r\n"
-"                     :o.                                                  -s                        \r\n"
-"                      .o:                                                 y.                        \r\n"
-"                        /o.                                              /+                         \r\n"
-"                         .+/`                                           -s                          \r\n"
-"                           -+/.                                        .s`                          \r\n"
-"                             ./+/.`                                   -s`                           \r\n"
-"                                .:/+:.`                              /o`                            \r\n"
-"                                    .:/o/.`                        .o:                              \r\n"
-"                                       o/:/+/.`                  .++`                               \r\n"
-"                                       -s   `:/+:`            `:+/`                                 \r\n"
-"                                        ++`     -+o-`      `-++-                                    \r\n"
-"                                         :s/::/+//::+/---/+/:`                                      \r\n"
-"                                          +/s:`      `-h-s-                                         \r\n"
-"                                          +/s-        `y y.                                         \r\n"
-"                                          +/y.        `y h`                                         \r\n"
-"                                          //s:`       `y d                                          \r\n"
-"                                          +/-:/++/-`  `y h-`                                        \r\n"
-"                                          y:hs-ysosss..y --/+++/-`                                  \r\n"
-"                                          ds:`s:o+`-:`o:oos./h++osoo`                               \r\n"
-"                                          ::   o+++   h:y `o+.s:`.::                                \r\n"
-"                                                -+-   -/`   :s.++                                   \r\n"
-"                                                             `/+-   ";
 const char CLI_SYSTEM_INFO[] PROGMEM = "[======== SYSTEM INFO ========]";
 const char CLI_SYSTEM_OUTPUT[] PROGMEM = "RAM usage: %u bytes used [%d%%], %u bytes free [%d%%], %u bytes in total\r\n";
 const char CLI_SYSTEM_AP_MAC[] PROGMEM = "AP MAC address: ";
