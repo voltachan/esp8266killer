@@ -16,7 +16,7 @@
 ![截图](https://s2.ax1x.com/2019/01/31/k3SCEd.png)
 ![截图](https://s2.ax1x.com/2019/01/31/k3SpHH.png)
 ![截图](https://s2.ax1x.com/2019/01/31/k3SSDe.png)
-![截图](https://s2.ax1x.com/2019/01/31/k1zzuD.png)
+![截图](https://s2.ax1x.com/2019/02/10/kUHG1x.png)
 
 # 由于本项目刚刚起步，如果您的设备为1MB_ESP8266，烦请您 Clone 整个项目后，打开`esp8266_deauther\esp8266_deauther.ino`，自行编译。
 **参考文档：https://github.com/spacehuhn/esp8266_deauther/wiki/Installation#compiling-using-arduino-ide**
